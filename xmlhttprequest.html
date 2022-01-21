@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //xhr的get请求
+        var xhr=new XMLHttpRequest()
+        xhr.open('get','http://www.liulongbin.top:3006/api/getbooks?id=1')
+        xhr.send()
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState===4&&xhr.status===200){//固定语句
+                console.log(xhr.responseText);
+            }
+        }
+        //xhr的post请求
+        var xhr2=new XMLHttpRequest()
+        xhr2.open('post','http://www.liulongbin.top:3006/api/addbook')
+        xhr2.setRequestHeader("Content-Type",'application/x-www-form-urlencoded')
+        xhr2.send('bookname=aaa&author=aaa&publisher=ada')
+        xhr2.onreadystatechange=function(){
+            if(xhr2.readyState===4&&xhr2.status===200){//固定语句
+                console.log(xhr2.responseText);
+            }
+        }
+    </script>
+</body>
+</html>

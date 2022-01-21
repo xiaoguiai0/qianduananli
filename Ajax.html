@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquary.js"></script>
+</head>
+<body> 
+    <button id="aaa">发起带参数的GET请求</button>
+    <button id="bbb">发起带参数的POST请求</button>
+    <button id="ccc">发起带参数的AJAX请求</button>
+    <button id="ddd">发起带参数的AJAX请求</button>
+    <script>
+        $(function(){
+            $('#aaa').on('click',function(){
+                $.get('http://www.liulongbin.top:3006/api/getbooks',{id:3},function(res){
+                    console.log(res);
+                })
+            })
+        })
+        $(function(){
+            $('#bbb').on('click',function(){
+                $.post('http://liulongbin.top:3006/api/addbook',{bookname:'谁',author:'22',publisher:'aa'},function(res){
+                    console.log(res);
+                })
+            })
+        })
+        $(function(){
+            $('#ccc').on('click',function(){
+                $.ajax({
+                    type:'GET',
+                    url:'http://www.liulongbin.top:3006/api/getbooks',
+                    data:{
+                        id:1
+                    },
+                    success:function(res){
+                        console.log(res);
+                    }
+                })
+            })
+        })
+        $(function(){
+            $('#ddd').on('click',function(){
+                $.ajax({
+                    type:'POST',
+                    url:'http://liulongbin.top:3006/api/addbook',
+                    data:{
+                        bookname:'谁aaa',author:'222',publisher:'aaa'
+                    },
+                    success:function(res){
+                        console.log(res);
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>

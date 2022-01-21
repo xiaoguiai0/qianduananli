@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width= device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        position: absolute;
+        width: 300px;
+        height: 200px;
+        background-color:aquamarine;
+    }
+    span{
+        margin-top: 300px;
+        position: absolute;
+        width: 300px;
+        height: 200px;
+        background-color:red;
+    }
+</style>
+<body>
+    <div> </div>
+    <span> </span>
+    <!-- 动画里面必须要加绝对定位！！！！ -->
+    <script>
+        //动画函数封装
+        function donghua(obj,target,callback){
+            clearInterval(obj.timer);
+            obj.timer=setInterval(function() {
+            if(obj.offsetLeft >= target) {
+                clearInterval(obj.timer);//清除定时器
+                callback();
+            }
+            obj.style.left = obj.offsetLeft+ 1 +'px';
+        }, 30 );
+        }
+        var div=document.querySelector('div');
+        var span=document.querySelector('span');
+        //调用函数  
+        donghua(div,300);
+        donghua(span,500,function(){
+            span.style.backgroundColor='green';
+        });
+    </script>
+</body>
+</html>
